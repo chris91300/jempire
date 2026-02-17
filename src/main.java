@@ -160,7 +160,7 @@ class Main{
 
             validDay = false;
         }else{
-            System.out.println("FELICITATION VOUS AVEZ CONSTRUIT UN MAGNIFIQUE CHATEAU!!!");
+            System.out.println("FÉLICITATIONS VOUS AVEZ CONSTRUIT UN MAGNIFIQUE CHATEAU !!!");
             castleBuilt = true;
         }
     }
