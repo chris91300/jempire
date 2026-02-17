@@ -167,4 +167,18 @@ class Main{
 
 
 
+    /**
+     * function qui permet de commercer
+     */
+    static void trade(){
+        if (pierre >= 5){
+            pierre -= 5;
+            or += 10;
+        } else{
+            int pierreManquante = 5 - pierre;
+            System.out.printf("Il vous manque %d pierres pour commercer.", pierreManquante);
+            System.out.println();
+            validDay = false;
+        }
+    }
 }
