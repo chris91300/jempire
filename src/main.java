@@ -8,10 +8,11 @@ class Main{
     static int habitants = 1;
     static boolean mineBuilt = false;
     static boolean validDay = true;
+    static boolean castleBuilt = false;
 
 
     public static void main(String[] args){
-        while (habitants > 0) {
+        while (habitants > 0 && !castleBuilt) {
             validDay = true;
             // mettre ici le programme du jeu
         }
@@ -124,4 +125,46 @@ class Main{
             validDay = false;
         }
     }
+
+
+    /**
+     * fonction qui permet de construire le chateau si le nombre de ressources le permette
+     */
+    static void buildCastle(){
+        if(
+            bois < 100 ||
+            pierre < 100 ||
+            or < 200 ||
+            habitants <= 40
+        ){
+            if(bois < 100){
+                int boisManquant = 100 - bois;
+                System.out.printf("Il vous manque %d bois pour construire votre château", boisManquant);
+                System.out.println();
+            }
+            if(pierre < 100){
+                int pierreManquant = 100 - pierre;
+                System.out.printf("Il vous manque %d pierre pour construire votre château", pierreManquant);
+                System.out.println();
+            }
+            if(or < 200){
+                int orManquant = 100 - or;
+                System.out.printf("Il vous manque %d or pour construire votre château",orManquant);
+                System.out.println();
+            }
+            if(habitants <= 40){
+                int habitantsManquant = 100 - habitants;
+                System.out.printf("Il vous manque %d habitants pour construire votre château",habitantsManquant);
+                System.out.println();
+            }
+
+            validDay = false;
+        }else{
+            System.out.println("FELICITATION VOUS AVEZ CONSTRUIT UN MAGNIFIQUE CHATEAU!!!");
+            castleBuilt = true;
+        }
+    }
+
+
+
 }
