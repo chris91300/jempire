@@ -45,4 +45,4 @@ A chaque tour de jeu, chaque habitant mange 1 ration de nourriture.
 S'il vous manque de la nourriture, les habitants qui ne pourront pas manger meurent.
 
 Vous **PERDEZ** si vous n'avez plus d'habitant.
-Vous **GAGNER** si vous construiser un chateau.
+Vous **GAGNEZ** si vous construiser un chateau.
