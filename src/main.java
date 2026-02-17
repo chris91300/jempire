@@ -58,4 +58,10 @@ class Main{
         scanner.close();
         return action;
     }
+
+    static void exploreForest(){
+        System.out.println("Vous avez trouvé 5 de bois et 3 de Nourriture");
+        bois += 5;
+        nourriture += 3;
+    }
 }
