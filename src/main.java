@@ -148,7 +148,7 @@ class Main{
                 System.out.println();
             }
             if(or < 200){
-                int orManquant = 100 - or;
+                int orManquant = 200 - or;
                 System.out.printf("Il vous manque %d or pour construire votre château",orManquant);
                 System.out.println();
             }
