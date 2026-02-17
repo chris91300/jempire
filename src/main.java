@@ -63,7 +63,9 @@ class Main{
         scanner.close();
         return action;
     }
-
+    /**
+     * function qui permet d'explorer la foret
+     */
     static void exploreForest(){
         System.out.println("Vous avez trouvé 5 de bois et 3 de Nourriture");
         bois += 5;
@@ -101,4 +103,25 @@ class Main{
         }
     }
 
+    /**
+     * function qui permet de travailler à la mine (si elle est construite)
+     */
+    static void workInMine(){
+        if (mineBuilt == true){
+            if (nourriture >= 5) {
+                nourriture -= 5;
+                pierre += 5;
+                or += 2;
+                System.out.println("Exploration de la mine fructueuse. Vous avez gagné 5 pierres et 2 d'or mais vous avez consommé 5 rations de nourriture.");
+            } else {
+                int nourritureManquante = 5 - nourriture;
+                System.out.printf("Il vous manque %d rations de nourriture pour travailler à la mine.", nourritureManquante);
+                System.out.println();
+                validDay = false;
+            }
+        } else {
+            System.out.println("La mine n'a pas encore été créée");
+            validDay = false;
+        }
+    }
 }
