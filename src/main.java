@@ -6,6 +6,7 @@ class Main{
     static int or = 50;
     static int nourriture = 100;
     static int habitants = 1;
+    static boolean mineBuilt = false;
     public static void main(String[] args){
         while (habitants > 0) {
             
@@ -58,4 +59,21 @@ class Main{
         scanner.close();
         return action;
     }
+
+    /**
+     * function qui permet de créer une mine si les ressources de bois sont suffisante (>=10)
+     */
+    static void createMine(){
+        if(bois >= 10){
+            bois -= 10;
+            mineBuilt = true;
+            System.out.println("mine créée. Elle a nécessité 10 bois.");
+        }else{
+            int boisManquant = 10 - bois;
+            System.out.printf("Il vous manque %d bois pour créer une mine.", boisManquant);
+            System.out.println();
+        }
+    }
+
+
 }
