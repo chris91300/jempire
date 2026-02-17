@@ -58,6 +58,7 @@ class Main{
             
             }catch(Exception e){
                 System.out.println("action inconnue (choisissez un nombre entre 1 et 6)");
+                System.out.println("votre action: ");
             }
         }
         
