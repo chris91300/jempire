@@ -60,6 +60,11 @@ class Main{
         return action;
     }
 
+    static void exploreForest(){
+        System.out.println("Vous avez trouvé 5 de bois et 3 de Nourriture");
+        bois += 5;
+        nourriture += 3;
+    }
     /**
      * function qui permet de créer une mine si les ressources de bois sont suffisante (>=10)
      */
