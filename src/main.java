@@ -8,10 +8,12 @@ class Main{
     static int habitants = 1;
     static boolean mineBuilt = false;
     static boolean validDay = true;
+
+
     public static void main(String[] args){
         while (habitants > 0) {
             validDay = true;
-
+            // mettre ici le programme du jeu
         }
         System.out.println("Tous les habitants sont morts, Game Over !");
     }
@@ -83,6 +85,24 @@ class Main{
             System.out.println();
         }
     }
+
+    /**
+     * fonction qui permet de recruter un soldat si le nombre d'or' (>=30) est suffisant
+     * le village gagne 1 habitant
+     */
+    static void recruitSoldier(){
+        if(or >= 30){
+            habitants++;
+            or -= 30;
+            System.out.println(("Félicitation, vous avez recruté un soldat. Mais cela vous a coûté 30 or."));
+        }else{
+            validDay = false;
+            int orManquant = 30 - or;
+            System.out.printf("Désolé il vous manque %d pour recruter un soldat.", orManquant);
+            System.out.println();
+        }
+    }
+
     /**
      * function qui permet de travailler à la mine (si elle est construite)
      */
