@@ -67,7 +67,7 @@ class Main{
         if(bois >= 10){
             bois -= 10;
             mineBuilt = true;
-            System.out.println("mine créée. Elle a nécessité 10 bois.");
+            System.out.println("Mine créée. Elle a nécessité 10 bois.");
         }else{
             int boisManquant = 10 - bois;
             System.out.printf("Il vous manque %d bois pour créer une mine.", boisManquant);
