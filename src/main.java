@@ -14,6 +14,7 @@ class Main{
     public static void main(String[] args){
         while (habitants > 0 && !castleBuilt) {
             validDay = true;
+            displayRessources();
             displayMenu();
             int action = getAction();
             
@@ -49,6 +50,10 @@ class Main{
         
             if(validDay){
                 nourriture -= habitants;
+                if (nourriture <= 0){
+                    habitants += nourriture;
+                    nourriture = 0;
+                }
             }
         }
 
@@ -59,13 +64,12 @@ class Main{
         
         
     }
-
-
     /**
      * affiche le menu d'actions possibles à l'utilisateur
      */
     static void displayMenu(){
         System.out.println("Que voulez-vous faire");
+        System.out.println();
         System.out.println("Explorer la forêt (tapez 1): ");
         System.out.println("Créer une mine (tapez 2): ");
         System.out.println("Travailler à la mine (tapez 3): ");
@@ -74,8 +78,6 @@ class Main{
         System.out.println("Construire le château (tapez 6): ");
         
     }
-
-
     /**
      * demande l'action à réaliser à l'utilisateur
      * @return {int} le numéro de l'action à réaliser ( 1 à 6 )
@@ -87,8 +89,9 @@ class Main{
         
         while (!actionIsValid) {
             try{
-                System.out.println("votre action: ");
+                System.out.print("votre action: ");
                 String choice = scanner.nextLine();
+                System.out.println();
                 int choiceNumber = Integer.parseInt(choice);
                 
 
@@ -122,7 +125,10 @@ class Main{
      * function qui permet de créer une mine si les ressources de bois sont suffisante (>=10)
      */
     static void createMine(){
-        if(bois >= 10){
+        if (mineBuilt){
+            System.out.println("La mine est déjà créée.");
+            validDay = false;
+        }else if(bois >= 10){
             bois -= 10;
             mineBuilt = true;
             System.out.println("Mine créée. Elle a nécessité 10 bois.");
@@ -133,7 +139,6 @@ class Main{
             System.out.println();
         }
     }
-
     /**
      * fonction qui permet de recruter un soldat si le nombre d'or' (>=30) est suffisant
      * le village gagne 1 habitant
@@ -156,24 +161,15 @@ class Main{
      */
     static void workInMine(){
         if (mineBuilt == true){
-            if (nourriture >= 5) {
                 nourriture -= 5;
                 pierre += 5;
                 or += 2;
                 System.out.println("Exploration de la mine fructueuse. Vous avez gagné 5 pierres et 2 d'or mais vous avez consommé 5 rations de nourriture.");
-            } else {
-                int nourritureManquante = 5 - nourriture;
-                System.out.printf("Il vous manque %d rations de nourriture pour travailler à la mine.", nourritureManquante);
-                System.out.println();
-                validDay = false;
-            }
         } else {
             System.out.println("La mine n'a pas encore été créée");
             validDay = false;
         }
     }
-
-
     /**
      * fonction qui permet de construire le chateau si le nombre de ressources le permette
      */
@@ -182,7 +178,7 @@ class Main{
             bois < 100 ||
             pierre < 100 ||
             or < 200 ||
-            habitants <= 40
+            habitants < 40
         ){
             if(bois < 100){
                 int boisManquant = 100 - bois;
@@ -199,7 +195,7 @@ class Main{
                 System.out.printf("Il vous manque %d or pour construire votre château",orManquant);
                 System.out.println();
             }
-            if(habitants <= 40){
+            if(habitants < 40){
                 int habitantsManquant = 40 - habitants;
                 System.out.printf("Il vous manque %d habitants pour construire votre château",habitantsManquant);
                 System.out.println();
@@ -211,9 +207,6 @@ class Main{
             castleBuilt = true;
         }
     }
-
-
-
     /**
      * function qui permet de commercer
      */
@@ -227,5 +220,15 @@ class Main{
             System.out.println();
             validDay = false;
         }
+    }
+    /**
+     * function qui permet d'afficher les ressources
+     */
+    static void displayRessources(){
+        System.out.println();
+        System.out.println("Vos ressources :");
+        System.out.printf("%d Bois | %d Pierre(s) | %d Or | %d Ration(s) de nourriture | %d Habitant(s)", bois, pierre, or, nourriture, habitants);
+        System.out.println();
+        System.out.println();
     }
 }
