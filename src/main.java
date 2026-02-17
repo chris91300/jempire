@@ -95,7 +95,7 @@ class Main{
                 System.out.println("Exploration de la mine fructueuse. Vous avez gagné 5 pierres et 2 d'or et perdu 5 rations de nourriture.");
             } else {
                 int nourritureManquante = 5 - nourriture;
-                System.out.printf("Il vous manque %d rations de nourriture pour créer une mine.", nourritureManquante);
+                System.out.printf("Il vous manque %d rations de nourriture pour travailler à la mine.", nourritureManquante);
                 System.out.println();
                 validDay = false;
             }
