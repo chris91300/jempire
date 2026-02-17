@@ -133,7 +133,7 @@ class Main{
             or += 10;
         } else{
             int pierreManquante = 5 - pierre;
-            System.out.printf("Il vous manque %d pierres pour travailler à la mine.", pierreManquante);
+            System.out.printf("Il vous manque %d pierres pour commercer.", pierreManquante);
             System.out.println();
             validDay = false;
         }
