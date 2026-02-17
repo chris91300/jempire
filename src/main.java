@@ -153,7 +153,7 @@ class Main{
                 System.out.println();
             }
             if(habitants <= 40){
-                int habitantsManquant = 100 - habitants;
+                int habitantsManquant = 40 - habitants;
                 System.out.printf("Il vous manque %d habitants pour construire votre château",habitantsManquant);
                 System.out.println();
             }
