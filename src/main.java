@@ -81,6 +81,7 @@ class Main{
             mineBuilt = true;
             System.out.println("Mine créée. Elle a nécessité 10 bois.");
         }else{
+            validDay = false;
             int boisManquant = 10 - bois;
             System.out.printf("Il vous manque %d bois pour créer une mine.", boisManquant);
             System.out.println();
