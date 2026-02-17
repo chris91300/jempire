@@ -9,14 +9,55 @@ class Main{
     static boolean mineBuilt = false;
     static boolean validDay = true;
     static boolean castleBuilt = false;
-
+    static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args){
         while (habitants > 0 && !castleBuilt) {
             validDay = true;
-            // mettre ici le programme du jeu
+            displayMenu();
+            int action = getAction();
+            
+            switch(action){
+                case 1:
+                    exploreForest();
+                    break;
+
+                case 2:
+                    createMine();
+                    break;
+
+                case 3:
+                    workInMine();
+                    break;
+
+                case 4:
+                    recruitSoldier();
+                    break;
+
+                case 5:
+                    trade();
+                    break;
+
+                case 6:
+                    buildCastle();
+                    break;
+
+                default:
+                System.out.println("OUPS. Il y a un soucis.");
+                validDay = false;
+            }
+        
+            if(validDay){
+                nourriture -= habitants;
+            }
         }
-        System.out.println("Tous les habitants sont morts, Game Over !");
+
+        scanner.close();
+        if(!castleBuilt){
+            System.out.println("Tous les habitants sont morts, Game Over !");
+        }
+        
+        
     }
 
 
@@ -31,7 +72,7 @@ class Main{
         System.out.println("Recruter un soldat (tapez 4): ");
         System.out.println("Commercer (tapez 5): ");
         System.out.println("Construire le château (tapez 6): ");
-        System.out.println("votre action: ");
+        
     }
 
 
@@ -40,29 +81,33 @@ class Main{
      * @return {int} le numéro de l'action à réaliser ( 1 à 6 )
      */
     static int getAction(){
-        Scanner scanner = new Scanner(System.in);
+       
         boolean actionIsValid = false;
         int action = 0;
         
         while (!actionIsValid) {
             try{
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+                System.out.println("votre action: ");
+                String choice = scanner.nextLine();
+                int choiceNumber = Integer.parseInt(choice);
+                
 
-            if(choice < 1 || action > 6){
-                throw new Exception();
-            }
+                if(choiceNumber < 1 || choiceNumber > 6){
+                    System.out.println("action inconnue (choisissez un nombre entre 1 et 6)");
+                    
+                }else{
+                    action = choiceNumber;
+                    actionIsValid = true;
+                }
 
-            action = choice;
-            actionIsValid = true;
+            
             
             }catch(Exception e){
                 System.out.println("action inconnue (choisissez un nombre entre 1 et 6)");
-                System.out.println("votre action: ");
             }
         }
         
-        scanner.close();
+        
         return action;
     }
     /**
