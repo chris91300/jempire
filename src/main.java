@@ -92,7 +92,7 @@ class Main{
                 nourriture -= 5;
                 pierre += 5;
                 or += 2;
-                System.out.println("Exploration de la mine fructueuse. Vous avez gagné 5 pierres et 2 d'or et perdu 5 rations de nourriture.");
+                System.out.println("Exploration de la mine fructueuse. Vous avez gagné 5 pierres et 2 d'or mais vous avez consommé 5 rations de nourriture.");
             } else {
                 int nourritureManquante = 5 - nourriture;
                 System.out.printf("Il vous manque %d rations de nourriture pour travailler à la mine.", nourritureManquante);
