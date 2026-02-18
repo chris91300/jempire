@@ -71,14 +71,19 @@ class Main{
      * affiche le menu d'actions possibles à l'utilisateur
      */
     static void displayMenu(){
-        System.out.println("Que voulez-vous faire");
+        System.out.println("================ JEMPIRE ================");
+        System.out.println("|                                       |");
+        System.out.println("|         Que voulez-vous faire         |");
+        System.out.println("|                                       |");
+        System.out.println("|     Explorer la forêt     | (tapez 1) |");
+        System.out.println("|       Créer une mine      | (tapez 2) |");
+        System.out.println("|   Travailler à la mine    | (tapez 3) |");
+        System.out.println("|     Recruter un soldat    | (tapez 4) |");
+        System.out.println("|         Commercer         | (tapez 5) |");
+        System.out.println("|    Construire le château  | (tapez 6) |");
+        System.out.println("|                                       |");
+        System.out.println("=========================================\n");
         System.out.println();
-        System.out.println("Explorer la forêt (tapez 1): ");
-        System.out.println("Créer une mine (tapez 2): ");
-        System.out.println("Travailler à la mine (tapez 3): ");
-        System.out.println("Recruter un soldat (tapez 4): ");
-        System.out.println("Commercer (tapez 5): ");
-        System.out.println("Construire le château (tapez 6): ");
         
     }
     /**
@@ -99,7 +104,11 @@ class Main{
                 
 
                 if(choiceNumber < 1 || choiceNumber > 6){
-                    System.out.println("action inconnue (choisissez un nombre entre 1 et 6)");
+                    System.out.println("====================== ATTENTION ======================");
+                    System.out.println("|                                                     |");
+                    System.out.println("| action inconnue (choisissez un nombre entre 1 et 6) |");
+                    System.out.println("|                                                     |");
+                    System.out.println("=======================================================\n");
                     
                 }else{
                     action = choiceNumber;
@@ -109,7 +118,11 @@ class Main{
             
             
             }catch(Exception e){
-                System.out.println("action inconnue (choisissez un nombre entre 1 et 6)");
+                System.out.println("====================== ATTENTION ======================");
+                System.out.println("|                                                     |");
+                System.out.println("| action inconnue (choisissez un nombre entre 1 et 6) |");
+                System.out.println("|                                                     |");
+                System.out.println("=======================================================\n");
             }
         }
         
@@ -120,7 +133,11 @@ class Main{
      * function qui permet d'explorer la foret
      */
     static void exploreForest(){
-        System.out.println("Vous avez trouvé 5 de bois et 3 de Nourriture");
+        System.out.println("====================== NOTIFICATION =====================");
+        System.out.println("|                                                       |");
+        System.out.println("| Vous avez trouvé 5 de Bois et 3 Rations de nourriture |");
+        System.out.println("|                                                       |");
+        System.out.println("=========================================================\n");
         bois += 5;
         nourriture += 3;
     }
@@ -129,17 +146,28 @@ class Main{
      */
     static void createMine(){
         if (mineBuilt){
-            System.out.println("La mine est déjà créée.");
+            System.out.println("======== ATTENTION ========");
+            System.out.println("|                         |");
+            System.out.println("| La mine est déjà créée. |");
+            System.out.println("|                         |");
+            System.out.println("===========================");
             validDay = false;
         }else if(bois >= 10){
             bois -= 10;
             mineBuilt = true;
-            System.out.println("Mine créée. Elle a nécessité 10 bois.");
+            System.out.println("============== NOTIFICATION =============");
+            System.out.println("|                                       |");
+            System.out.println("| Mine créée. Elle a nécessité 10 bois. |");
+            System.out.println("|                                       |");
+            System.out.println("=========================================\n");
         }else{
             validDay = false;
             int boisManquant = 10 - bois;
-            System.out.printf("Il vous manque %d bois pour créer une mine.", boisManquant);
-            System.out.println();
+            System.out.println("================== ATTENTION ==================");
+            System.out.println("|                                             |");
+            System.out.printf("| Il vous manque %d bois pour créer une mine. |\n", boisManquant);
+            System.out.println("|                                             |");
+            System.out.println("===============================================\n");
         }
     }
     /**
@@ -150,12 +178,20 @@ class Main{
         if(or >= 30){
             habitants++;
             or -= 30;
-            System.out.println(("Félicitation, vous avez recruté un soldat. Mais cela vous a coûté 30 or."));
+            System.out.println("=============================== NOTIFICATION ===============================");
+            System.out.println("|                                                                          |");
+            System.out.println("| Félicitation, vous avez recruté un soldat. Mais cela vous a coûté 30 or. |");
+            System.out.println("|                                                                          |");
+            System.out.println("============================================================================\n");
         }else{
             validDay = false;
             int orManquant = 30 - or;
-            System.out.printf("Désolé il vous manque %d pour recruter un soldat.", orManquant);
-            System.out.println();
+            System.out.println("===================== ATTENTION =====================");
+            System.out.println("|                                                   |");
+            System.out.printf("| Il vous manque %d d'Or pour recruter un soldat. |\n", orManquant);
+            System.out.println("|                                                   |");
+            System.out.println("=====================================================\n");
+
         }
     }
 
@@ -167,10 +203,18 @@ class Main{
                 nourriture -= 5;
                 pierre += 5;
                 or += 2;
-                System.out.println("Exploration de la mine fructueuse. Vous avez gagné 5 pierres et 2 d'or mais vous avez consommé 5 rations de nourriture.");
-        } else {
-            System.out.println("La mine n'a pas encore été créée");
-            validDay = false;
+                System.out.println("======================================================= NOTIFICATION ======================================================");
+                System.out.println("|                                                                                                                         |");
+                System.out.println("| Exploration de la mine fructueuse. Vous avez gagné 5 pierres et 2 d'or mais vous avez consommé 5 rations de nourriture. |");
+                System.out.println("|                                                                                                                         |");
+                System.out.println("===========================================================================================================================\n");
+            } else {
+                System.out.println("============= ATTENTION ============");
+                System.out.println("|                                  |");
+                System.out.println("| La mine n'a pas encore été créée |");
+                System.out.println("|                                  |");
+                System.out.println("====================================\n");
+                validDay = false;
         }
     }
     /**
@@ -185,29 +229,45 @@ class Main{
         ){
             if(bois < 100){
                 int boisManquant = 100 - bois;
-                System.out.printf("Il vous manque %d bois pour construire votre château", boisManquant);
-                System.out.println();
+                System.out.println("===================== ATTENTION =====================");
+                System.out.println("|                                                   |");
+                System.out.printf("| Il vous manque %d bois pour construire votre château |\n", boisManquant);
+                System.out.println("|                                                   |");
+                System.out.println("=====================================================\n");
             }
             if(pierre < 100){
                 int pierreManquant = 100 - pierre;
-                System.out.printf("Il vous manque %d pierre pour construire votre château", pierreManquant);
-                System.out.println();
+                System.out.println("===================== ATTENTION =====================");
+                System.out.println("|                                                   |");
+                System.out.printf("| Il vous manque %d pierre pour construire votre château |\n", pierreManquant);
+                System.out.println("|                                                   |");
+                System.out.println("=====================================================\n");
+
             }
             if(or < 200){
                 int orManquant = 200 - or;
-                System.out.printf("Il vous manque %d or pour construire votre château",orManquant);
-                System.out.println();
+                System.out.println("===================== ATTENTION =====================");
+                System.out.println("|                                                   |");
+                System.out.printf("| Il vous manque %d d'Or pour construire votre château |\n",orManquant);
+                System.out.println("|                                                   |");
+                System.out.println("=====================================================\n");
             }
             if(habitants < 40){
                 int habitantsManquant = 40 - habitants;
-                System.out.printf("Il vous manque %d habitants pour construire votre château",habitantsManquant);
-                System.out.println();
+                System.out.println("===================== ATTENTION =====================");
+                System.out.println("|                                                   |");
+                System.out.printf("| Il vous manque %d habitants pour construire votre château |\n",habitantsManquant);
+                System.out.println("|                                                   |");
+                System.out.println("=====================================================\n");
             }
 
             validDay = false;
         }else{
-            System.out.println("FÉLICITATIONS VOUS AVEZ CONSTRUIT UN MAGNIFIQUE CHATEAU !!!");
-            generic();
+            System.out.println("============================ WINNER ===========================");
+            System.out.println("|                                                             |");
+            System.out.println("| FÉLICITATIONS VOUS AVEZ CONSTRUIT UN MAGNIFIQUE CHATEAU !!! |");
+            System.out.println("|                                                             |");
+            System.out.println("===============================================================\n");
             castleBuilt = true;
         }
     }
@@ -218,10 +278,18 @@ class Main{
         if (pierre >= 5){
             pierre -= 5;
             or += 10;
+            System.out.println("================ NOTIFICATION ================");
+            System.out.println("|                                            |");
+            System.out.println("| Vous avez échangé 5 Pierres contre 10 d'Or | ");
+            System.out.println("|                                            |");
+            System.out.println("==============================================\n");
         } else{
             int pierreManquante = 5 - pierre;
-            System.out.printf("Il vous manque %d pierres pour commercer.", pierreManquante);
-            System.out.println();
+            System.out.println("===================== ATTENTION =====================");
+            System.out.println("|                                                   |");
+            System.out.printf("| Il vous manque %d pierres pour commercer. |\n", pierreManquante);
+            System.out.println("|                                                   |");
+            System.out.println("=====================================================\n");
             validDay = false;
         }
     }
@@ -230,10 +298,11 @@ class Main{
      */
     static void displayRessources(){
         System.out.println();
-        System.out.println("Vos ressources :");
-        System.out.printf("%d Bois | %d Pierre(s) | %d Or | %d Ration(s) de nourriture | %d Habitant(s)", bois, pierre, or, nourriture, habitants);
-        System.out.println();
-        System.out.println();
+        System.out.println("=============================== VOS RESSOURCES ===============================");
+        System.out.println("|                                                                            |");
+        System.out.printf("| %d Bois | %d Pierre(s) | %d Or | %d Ration(s) de nourriture | %d Habitant(s) |\n", bois, pierre, or, nourriture, habitants);
+        System.out.println("|                                                                            |");
+        System.out.println("==============================================================================\n");
     }
 
     static void generic(){
