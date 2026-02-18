@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.concurrent.*;
+
 
 class Main{
     static int bois = 0;
@@ -12,6 +14,7 @@ class Main{
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args){
+        
         while (habitants > 0 && !castleBuilt) {
             validDay = true;
             displayRessources();
@@ -204,6 +207,7 @@ class Main{
             validDay = false;
         }else{
             System.out.println("FÉLICITATIONS VOUS AVEZ CONSTRUIT UN MAGNIFIQUE CHATEAU !!!");
+            generic();
             castleBuilt = true;
         }
     }
@@ -230,5 +234,82 @@ class Main{
         System.out.printf("%d Bois | %d Pierre(s) | %d Or | %d Ration(s) de nourriture | %d Habitant(s)", bois, pierre, or, nourriture, habitants);
         System.out.println();
         System.out.println();
+    }
+
+    static void generic(){
+        
+        System.out.println("");
+        System.out.println("");
+        Runnable sautDeLigne = () -> System.out.println("");
+        Runnable l1 = () ->  System.out.println("                    ** ** ** **                    ");
+        Runnable l2 = () ->  System.out.println("                    ** ** ** **                    ");
+        Runnable l3 = () ->  System.out.println("                    ***********                    ");
+        Runnable l4 = () ->  System.out.println("                    ***********                    ");
+        Runnable l5 = () ->  System.out.println("                    ****   ****                    ");
+        Runnable l6 = () ->  System.out.println("       ** ** ** **  ****   ****  ** ** ** **       ");
+        Runnable l7 = () ->  System.out.println("       ** ** ** **  ***********  ** ** ** **       ");
+        Runnable l8 = () ->  System.out.println("       *************************************       ");
+        Runnable l9 = () ->  System.out.println("       *************************************       ");
+        Runnable l10 = () -> System.out.println("       ****   ***********************   ****       ");
+        Runnable l11 = () -> System.out.println("       ****   ***********************   ****       ");
+        Runnable l12 = () -> System.out.println("       ****************     ****************       ");
+        Runnable l13 = () -> System.out.println("       ****************     ****************       ");
+        Runnable l14 = () -> System.out.println("       ****************     ****************       "); 
+
+        Runnable sautWithBorder =  () ->   System.out.println("       *                                   *       ");
+        Runnable border =  () -> System.out.println("       *************************************       ");// 7 37 7
+        Runnable showDev = () -> System.out.println("       *           DÉVELOPPEURS            *       ");// 12 attention border right et left
+        Runnable showQuentin = ()->System.out.println("       *        Quentin  DEHAINAULT        *       ");
+        Runnable showChristophe = ()-> System.out.println("       *         Christophe MICHEL         *       ");// 17
+        Runnable showMerci = () -> System.out.println("       *  UN GRAND MERCI À NOTRE FORMATEUR *       ");// 32
+        Runnable showFlavien = ()->System.out.println("       *             Flavien               *       ");// 7
+        Runnable showThanks = ()-> System.out.println("       *   Thanks to all the participants  *       ");// 30
+        Runnable showEnd = () -> System.out.println("       *                END                *       ");// 3
+        
+        ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
+        // On planifie l'exécution après 1 secondes
+        scheduler.schedule(l1, 300, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l2, 600, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l3, 900, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l4, 1200, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l5, 1500, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l6, 1800, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l7, 2100, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l8, 2400, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l9, 2700, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l10, 3000, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l11, 3300, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l12, 3600, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l13, 3900, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l14, 4200, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautDeLigne, 4500, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautDeLigne, 5000, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautDeLigne, 5500, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautDeLigne, 6000, TimeUnit.MILLISECONDS);
+        scheduler.schedule(border, 6500, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautWithBorder, 7000, TimeUnit.MILLISECONDS);
+        scheduler.schedule(showDev, 6500, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautWithBorder, 7000, TimeUnit.MILLISECONDS);
+        scheduler.schedule(showQuentin, 7500, TimeUnit.MILLISECONDS);
+        scheduler.schedule(showChristophe, 8000, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautWithBorder, 8500, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautWithBorder, 9000, TimeUnit.MILLISECONDS);
+        scheduler.schedule(showMerci, 9500, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautWithBorder, 10000, TimeUnit.MILLISECONDS);
+        scheduler.schedule(showFlavien, 10500, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautWithBorder, 11000, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautWithBorder, 11500, TimeUnit.MILLISECONDS);
+        scheduler.schedule(showThanks, 12000, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautWithBorder, 12500, TimeUnit.MILLISECONDS);
+        scheduler.schedule(showEnd, 13000, TimeUnit.MILLISECONDS);
+        scheduler.schedule(border, 13500, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautDeLigne, 14000, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautDeLigne, 14500, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautDeLigne, 15000, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautDeLigne, 15500, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautDeLigne, 16000, TimeUnit.MILLISECONDS);
+
+        // N'oublie pas de fermer le scheduler proprement plus tard
+        scheduler.shutdown();
     }
 }
