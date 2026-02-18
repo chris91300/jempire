@@ -4,12 +4,12 @@ import java.lang.Math;
 
 
 class Main{
-    static int totalLoop = 0;
-    static int bois = 0;
-    static int pierre = 0;
-    static int or = 50;
-    static int nourriture = 100;
-    static int habitants = 1;
+    static int day = 1;
+    static int bois = 1000;
+    static int pierre = 1000;
+    static int or = 5000;
+    static int nourriture = 1000;
+    static int habitants = 50;
     static boolean mineBuilt = false;
     static boolean validDay = true;
     static boolean castleBuilt = false;
@@ -61,7 +61,7 @@ class Main{
                 nourriture = 0;
             }
 
-            totalLoop++;
+            day++;
         }
     }
 
@@ -104,7 +104,10 @@ class Main{
      * affiche le menu d'actions possibles à l'utilisateur
      */
     static void displayMenu(){
+        String dayToString = formatNumber(day);
         System.out.println("========================== JEMPIRE =========================");
+        System.out.println("|                                                          |");
+        System.out.printf("|                         JOUR %s                        |\n",dayToString);
         System.out.println("|                                                          |");
         System.out.println("|                  Que voulez-vous faire                   |");
         System.out.println("|                                                          |");
@@ -313,11 +316,12 @@ class Main{
 
             validDay = false;
         }else{
-            System.out.println("============================ WINNER ===========================");
-            System.out.println("|                                                             |");
-            System.out.println("| FÉLICITATIONS VOUS AVEZ CONSTRUIT UN MAGNIFIQUE CHATEAU !!! |");
-            System.out.println("|                                                             |");
-            System.out.println("===============================================================\n");
+            String dayToString = formatNumber(day);
+            System.out.println("=================================== WINNER ===================================");
+            System.out.println("|                                                                            |");
+            System.out.printf("| FÉLICITATIONS VOUS AVEZ CONSTRUIT UN MAGNIFIQUE CHATEAU  EN %s JOURS !!! |\n",dayToString);
+            System.out.println("|                                                                            |");
+            System.out.println("==============================================================================\n");
             castleBuilt = true;
             genericWon();
         }
@@ -384,14 +388,14 @@ class Main{
         Runnable l14 = () -> System.out.println("       ****************     ****************       "); 
 
         Runnable sautWithBorder =  () ->   System.out.println("       *                                   *       ");
-        Runnable border =  () -> System.out.println("       *************************************       ");// 7 37 7
-        Runnable showDev = () -> System.out.println("       *           DÉVELOPPEURS            *       ");// 12 attention border right et left
-        Runnable showQuentin = ()->System.out.println("       *        Quentin  DEHAINAULT        *       ");
-        Runnable showChristophe = ()-> System.out.println("       *         Christophe MICHEL         *       ");// 17
-        Runnable showMerci = () -> System.out.println("       *  UN GRAND MERCI À NOTRE FORMATEUR *       ");// 32
-        Runnable showFlavien = ()->System.out.println("       *             Flavien               *       ");// 7
-        Runnable showThanks = ()-> System.out.println("       *   Thanks to all the participants  *       ");// 30
-        Runnable showEnd = () -> System.out.println("       *                END                *       ");// 3
+        Runnable border =  () -> System.out.println("       =====================================       ");// 7 37 7
+        Runnable showDev = () -> System.out.println("       |           DÉVELOPPEURS            |       ");// 12 attention border right et left
+        Runnable showQuentin = ()->System.out.println("       |        Quentin  DEHAINAULT        |       ");
+        Runnable showChristophe = ()-> System.out.println("       |         Christophe MICHEL         |       ");// 17
+        Runnable showMerci = () -> System.out.println("       |  UN GRAND MERCI À NOTRE FORMATEUR |       ");// 32
+        Runnable showFlavien = ()->System.out.println("       |             Flavien               |       ");// 7
+        Runnable showThanks = ()-> System.out.println("       |   Thanks to all the participants  |       ");// 30
+        Runnable showEnd = () -> System.out.println("       |                END                |       ");// 3
         
         ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
         // On planifie l'exécution après 1 secondes
@@ -461,13 +465,13 @@ class Main{
         Runnable l14 = () -> System.out.println("                       ***************             "); 
         Runnable l15 = () -> System.out.println("                                                   ");        
         Runnable l16 = () -> System.out.println("                                                   "); 
-        Runnable l17 = () -> System.out.println("       *************************************       ");
-        Runnable l18 = () -> System.out.println("       *                                   *       ");
-        Runnable l19 = () -> System.out.println("       *                PERDU              *       ");
-        Runnable l20 = () -> System.out.println("       *                                   *       ");
-        Runnable l21 = () -> System.out.println("       *   VOS HABITANTS SONT TOUS MORTS   *       ");
-        Runnable l22 = () -> System.out.println("       *                                   *       ");
-        Runnable l23 = () -> System.out.println("       *************************************       ");
+        Runnable l17 = () -> System.out.println("       =====================================       ");
+        Runnable l18 = () -> System.out.println("       |                                   |       ");
+        Runnable l19 = () -> System.out.println("       |                PERDU              |       ");
+        Runnable l20 = () -> System.out.println("       |                                   |       ");
+        Runnable l21 = () -> System.out.println("       |   VOS HABITANTS SONT TOUS MORTS   |       ");
+        Runnable l22 = () -> System.out.println("       |                                   |       ");
+        Runnable l23 = () -> System.out.println("       =====================================       ");
 
 
 
@@ -523,16 +527,16 @@ class Main{
     static void thereMightBeAnAttack(){
         double random = Math.random();
         if(random <= 0.05){
-            Math.exp(random);
-            int soldiers =  (int)( Math.exp(random * totalLoop * 0.15) );
+            random = Math.random();
+            int soldiers =  (int)( Math.exp(random * day * 0.15) );
             
             String soldiersToString = formatNumber(soldiers);
-            System.out.println("======================== ALERTE =======================");
-            System.out.println("|                                                     |");
-            System.out.println("|               Votre village est attaqué             |");
-            System.out.printf("|                   %s soldat(s)                     |\n", soldiersToString);
-            System.out.println("|                                                     |");
-            System.out.println("=======================================================\n");
+            System.out.println("========================== ALERTE =========================");
+            System.out.println("|                                                         |");
+            System.out.println("|               Votre village est attaqué par             |");
+            System.out.printf("|                     %s soldat(s)                      |\n", soldiersToString);
+            System.out.println("|                                                         |");
+            System.out.println("===========================================================\n");
 
 
             if( habitants >= soldiers ){
@@ -543,7 +547,7 @@ class Main{
                 System.out.println("|                                                     |");
                 System.out.println("|               Vous avez gagné la bataille           |");
                 if( habitantsDead > 0 ){
-                    System.out.printf("|        mais vous avez perdu %s habitant(s)         |\n", habitantsToString);
+                    System.out.printf("|        mais vous avez perdu %s habitant(s)        |\n", habitantsToString);
                 }else{
                     System.out.printf("|              vous avez perdu aucun habitant         |\n", habitantsToString);
                 }
