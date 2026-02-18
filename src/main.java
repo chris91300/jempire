@@ -20,7 +20,7 @@ class Main{
        
         while (habitants > 0 && !castleBuilt) {
             validDay = true;
-            
+            limitRessources();
             displayRessources();
             displayMenu();
             action( getAction() );  
@@ -608,8 +608,26 @@ class Main{
                 System.out.println("|                                                     |");
                 System.out.println("=======================================================\n");
             }
-            
-            
+        }
+    }  
+    /**
+    * function qui permet de limiter les ressources à 10000
+    */
+    static void limitRessources(){
+        if (bois > 9999){
+            bois = 9999;
+        }
+        if (pierre > 9999){
+            pierre = 9999;
+        }
+        if (or > 9999){
+            or = 9999;
+        }
+        if (nourriture > 9999){
+            nourriture = 9999;
+        }
+        if (habitants > 9999){
+            habitants = 9999;
         }
     }
 }
