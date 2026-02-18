@@ -163,11 +163,12 @@ class Main{
         }else{
             validDay = false;
             int boisManquant = 10 - bois;
-            System.out.println("================== ATTENTION ==================");
-            System.out.println("|                                             |");
-            System.out.printf("| Il vous manque %d bois pour créer une mine. |\n", boisManquant);
-            System.out.println("|                                             |");
-            System.out.println("===============================================\n");
+            String boisToString = formatNumber(boisManquant);
+            System.out.println("=================== ATTENTION ===================");
+            System.out.println("|                                               |");
+            System.out.printf("| Il vous manque %s bois pour créer une mine.  |\n", boisToString);
+            System.out.println("|                                               |");
+            System.out.println("=================================================\n");
         }
     }
     /**
@@ -178,19 +179,20 @@ class Main{
         if(or >= 30){
             habitants++;
             or -= 30;
-            System.out.println("=============================== NOTIFICATION ===============================");
-            System.out.println("|                                                                          |");
-            System.out.println("| Félicitation, vous avez recruté un soldat. Mais cela vous a coûté 30 or. |");
-            System.out.println("|                                                                          |");
-            System.out.println("============================================================================\n");
+            System.out.println("=============================== NOTIFICATION ================================");
+            System.out.println("|                                                                           |");
+            System.out.println("| Félicitations, vous avez recruté un soldat. Mais cela vous a coûté 30 or. |");
+            System.out.println("|                                                                           |");
+            System.out.println("=============================================================================\n");
         }else{
             validDay = false;
             int orManquant = 30 - or;
-            System.out.println("===================== ATTENTION =====================");
-            System.out.println("|                                                   |");
-            System.out.printf("| Il vous manque %d d'Or pour recruter un soldat. |\n", orManquant);
-            System.out.println("|                                                   |");
-            System.out.println("=====================================================\n");
+            String orManquantToString = formatNumber(orManquant);
+            System.out.println("====================== ATTENTION ======================");
+            System.out.println("|                                                     |");
+            System.out.printf("|   Il vous manque %s d'Or pour recruter un soldat.  |\n", orManquantToString);
+            System.out.println("|                                                     |");
+            System.out.println("=======================================================\n");
 
         }
     }
@@ -229,36 +231,40 @@ class Main{
         ){
             if(bois < 100){
                 int boisManquant = 100 - bois;
-                System.out.println("===================== ATTENTION =====================");
-                System.out.println("|                                                   |");
-                System.out.printf("| Il vous manque %d bois pour construire votre château |\n", boisManquant);
-                System.out.println("|                                                   |");
-                System.out.println("=====================================================\n");
+                String boisManquantToString = formatNumber(boisManquant);
+                System.out.println("======================= ATTENTION =======================");
+                System.out.println("|                                                       |");
+                System.out.printf("| Il vous manque %s bois pour construire votre château |\n", boisManquantToString);
+                System.out.println("|                                                       |");
+                System.out.println("=========================================================\n");
             }
             if(pierre < 100){
                 int pierreManquant = 100 - pierre;
-                System.out.println("===================== ATTENTION =====================");
-                System.out.println("|                                                   |");
-                System.out.printf("| Il vous manque %d pierre pour construire votre château |\n", pierreManquant);
-                System.out.println("|                                                   |");
-                System.out.println("=====================================================\n");
+                String pierreManquantToString = formatNumber(pierreManquant);
+                System.out.println("======================== ATTENTION ========================");
+                System.out.println("|                                                         |");
+                System.out.printf("| Il vous manque %s pierre pour construire votre château |\n", pierreManquantToString);
+                System.out.println("|                                                         |");
+                System.out.println("===========================================================\n");
 
             }
             if(or < 200){
                 int orManquant = 200 - or;
-                System.out.println("===================== ATTENTION =====================");
-                System.out.println("|                                                   |");
-                System.out.printf("| Il vous manque %d d'Or pour construire votre château |\n",orManquant);
-                System.out.println("|                                                   |");
-                System.out.println("=====================================================\n");
+                String orManquantToString = formatNumber(orManquant);
+                System.out.println("======================= ATTENTION =======================");
+                System.out.println("|                                                       |");
+                System.out.printf("| Il vous manque %s d'Or pour construire votre château |\n",orManquantToString);
+                System.out.println("|                                                       |");
+                System.out.println("=========================================================\n");
             }
             if(habitants < 40){
                 int habitantsManquant = 40 - habitants;
-                System.out.println("===================== ATTENTION =====================");
-                System.out.println("|                                                   |");
-                System.out.printf("| Il vous manque %d habitants pour construire votre château |\n",habitantsManquant);
-                System.out.println("|                                                   |");
-                System.out.println("=====================================================\n");
+                String habitantsManquantToString = formatNumber(habitantsManquant);
+                System.out.println("========================== ATTENTION =========================");
+                System.out.println("|                                                            |");
+                System.out.printf("| Il vous manque %s habitants pour construire votre château |\n",habitantsManquantToString);
+                System.out.println("|                                                            |");
+                System.out.println("==============================================================\n");
             }
 
             validDay = false;
@@ -269,6 +275,7 @@ class Main{
             System.out.println("|                                                             |");
             System.out.println("===============================================================\n");
             castleBuilt = true;
+            genericWon();
         }
     }
     /**
@@ -285,11 +292,12 @@ class Main{
             System.out.println("==============================================\n");
         } else{
             int pierreManquante = 5 - pierre;
-            System.out.println("===================== ATTENTION =====================");
-            System.out.println("|                                                   |");
-            System.out.printf("| Il vous manque %d pierres pour commercer. |\n", pierreManquante);
-            System.out.println("|                                                   |");
-            System.out.println("=====================================================\n");
+            String pierreManquantetToString = formatNumber(pierreManquante);
+            System.out.println("====================== ATTENTION ======================");
+            System.out.println("|                                                     |");
+            System.out.printf("|     Il vous manque %s pierres pour commercer.      |\n", pierreManquantetToString);
+            System.out.println("|                                                     |");
+            System.out.println("=======================================================\n");
             validDay = false;
         }
     }
@@ -297,12 +305,18 @@ class Main{
      * function qui permet d'afficher les ressources
      */
     static void displayRessources(){
+        
+        String pierreToString = formatNumber(pierre);
+        String boisToString = formatNumber(bois);
+        String orToString = formatNumber(or);
+        String nourritureToString = formatNumber(nourriture);
+        String habitantsToString = formatNumber(habitants);
         System.out.println();
-        System.out.println("=============================== VOS RESSOURCES ===============================");
-        System.out.println("|                                                                            |");
-        System.out.printf("| %d Bois | %d Pierre(s) | %d Or | %d Ration(s) de nourriture | %d Habitant(s) |\n", bois, pierre, or, nourriture, habitants);
-        System.out.println("|                                                                            |");
-        System.out.println("==============================================================================\n");
+        System.out.println("==================================== VOS RESSOURCES ====================================");
+        System.out.println("|                                                                                      |");
+        System.out.printf("|  %s Bois | %s Pierre(s) | %s Or | %s Ration(s) de nourriture | %s Habitant(s)   |\n", boisToString, pierreToString, orToString, nourritureToString, habitantsToString);
+        System.out.println("|                                                                                      |");
+        System.out.println("========================================================================================\n");
     }
 
     static void genericWon(){
@@ -429,25 +443,37 @@ class Main{
         scheduler.schedule(l12, 3600, TimeUnit.MILLISECONDS);
         scheduler.schedule(l13, 3900, TimeUnit.MILLISECONDS);
         scheduler.schedule(l14, 4200, TimeUnit.MILLISECONDS);
-        scheduler.schedule(l15, 4200, TimeUnit.MILLISECONDS);
-        scheduler.schedule(l16, 4200, TimeUnit.MILLISECONDS);
-        scheduler.schedule(l17, 4200, TimeUnit.MILLISECONDS);
-        scheduler.schedule(l18, 4200, TimeUnit.MILLISECONDS);
-        scheduler.schedule(l19, 4200, TimeUnit.MILLISECONDS);
-        scheduler.schedule(l20, 4200, TimeUnit.MILLISECONDS);
-        scheduler.schedule(l21, 4200, TimeUnit.MILLISECONDS);
-        scheduler.schedule(l22, 4200, TimeUnit.MILLISECONDS);
-        scheduler.schedule(l23, 4200, TimeUnit.MILLISECONDS);
-        scheduler.schedule(sautDeLigne, 14000, TimeUnit.MILLISECONDS);
-        scheduler.schedule(sautDeLigne, 14500, TimeUnit.MILLISECONDS);
-        scheduler.schedule(sautDeLigne, 15000, TimeUnit.MILLISECONDS);
-        scheduler.schedule(sautDeLigne, 15500, TimeUnit.MILLISECONDS);
-        scheduler.schedule(sautDeLigne, 16000, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l15, 4500, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l16, 4800, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l17, 5100, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l18, 5400, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l19, 5700, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l20, 6000, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l21, 6300, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l22, 6600, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l23, 6900, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautDeLigne, 7200, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautDeLigne, 7500, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautDeLigne, 7800, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautDeLigne, 8100, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautDeLigne, 8400, TimeUnit.MILLISECONDS);
 
         // N'oublie pas de fermer le scheduler proprement plus tard
         scheduler.shutdown();
     }
 
+    static String formatNumber(int number){
+        String numberFormatted = "";
+        if( number < 10 ){
+            numberFormatted = "  "+number;
+        }else if (number < 100 ){
+            numberFormatted = " "+number;
+        }else{
+            numberFormatted = ""+number;
+        }
 
+
+        return numberFormatted;
+    }
 
 }
