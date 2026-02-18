@@ -15,8 +15,15 @@ Ensuite il faut compiler les fichiers :
 javac -d build src/main.java
 ```
 Puis lancer le jeu :
+
+soit en mode normal:
 ```
 java -cp build/ Main
+```
+
+soit en mode attaque (vous pourrez subir des attaques à chaques tours):
+```
+java -cp build/ Main attack
 ```
 
 Maintenant suivez les instructions pour jouer.
