@@ -41,6 +41,11 @@ class Main{
     }
 
 
+    /**
+     * ajoute la possibilité d'être attaqué si l'utilisateur la demandé
+     * @param args les arguments entrés par l'utilisateur au moment de lancer le programme
+     * @return boolean 
+     */
     static boolean doesUserWantToBeAttacked(String[] args){
         boolean withAttack = false;
         if(args.length > 0){
@@ -59,6 +64,10 @@ class Main{
        return withAttack;
     }
 
+    /**
+     * un tour se termine. on fait manger les habitants
+     * si il manque de la nourriture, certains mourront
+     */
     static void isTimeToEatAndGoToSleep(){
         if(validDay){
             nourriture -= habitants;
@@ -71,6 +80,10 @@ class Main{
         }
     }
 
+    /**
+     * execute une action en fonction de l'action demandée par l'utilisateur
+     * @param actionNumber l'action demandée (1 à 6)
+     */
     static void action(int actionNumber){
         switch(actionNumber){
                 case 1:
@@ -106,6 +119,7 @@ class Main{
                 validDay = false;
             }
     }
+    
     /**
      * affiche le menu d'actions possibles à l'utilisateur
      */
@@ -128,6 +142,7 @@ class Main{
         System.out.println();
         
     }
+   
     /**
      * demande l'action à réaliser à l'utilisateur
      * @return {int} le numéro de l'action à réaliser ( 1 à 6 )
@@ -171,6 +186,7 @@ class Main{
         
         return action;
     }
+    
     /**
      * function qui permet d'explorer la foret
      */
@@ -187,6 +203,7 @@ class Main{
         System.out.println("|                                                             |");
         System.out.println("===============================================================\n"); 
     }
+    
     /**
      * function qui permet de créer une mine si les ressources de bois sont suffisante (>=10)
      */
@@ -217,6 +234,7 @@ class Main{
             System.out.println("=================================================\n");
         }
     }
+   
     /**
      * fonction qui permet de recruter un soldat si le nombre d'or' (>=30) est suffisant
      * le village gagne 1 habitant
@@ -272,6 +290,7 @@ class Main{
                 validDay = false;
         }
     }
+   
     /**
      * fonction qui permet de construire le chateau si le nombre de ressources le permette
      */
@@ -332,6 +351,7 @@ class Main{
             genericWon();
         }
     }
+    
     /**
      * function qui permet de commercer
      */
@@ -355,6 +375,7 @@ class Main{
             validDay = false;
         }
     }
+    
     /**
      * function qui permet d'afficher les ressources
      */
@@ -373,6 +394,9 @@ class Main{
         System.out.println("============================================================================================\n");
     }
 
+     /**
+     * fonction qui affiche le généric de fin si l'utilisateur gagne
+     */
     static void genericWon(){
         
         System.out.println("");
@@ -404,7 +428,7 @@ class Main{
         Runnable showEnd = () -> System.out.println("       |                END                |       ");// 3
         
         ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
-        // On planifie l'exécution après 1 secondes
+        // On planifie l'exécution après 300ms secondes
         scheduler.schedule(l1, 300, TimeUnit.MILLISECONDS);
         scheduler.schedule(l2, 600, TimeUnit.MILLISECONDS);
         scheduler.schedule(l3, 900, TimeUnit.MILLISECONDS);
@@ -420,36 +444,38 @@ class Main{
         scheduler.schedule(l13, 3900, TimeUnit.MILLISECONDS);
         scheduler.schedule(l14, 4200, TimeUnit.MILLISECONDS);
         scheduler.schedule(sautDeLigne, 4500, TimeUnit.MILLISECONDS);
-        scheduler.schedule(sautDeLigne, 5000, TimeUnit.MILLISECONDS);
-        scheduler.schedule(sautDeLigne, 5500, TimeUnit.MILLISECONDS);
-        scheduler.schedule(sautDeLigne, 6000, TimeUnit.MILLISECONDS);
-        scheduler.schedule(border, 6500, TimeUnit.MILLISECONDS);
-        scheduler.schedule(sautWithBorder, 7000, TimeUnit.MILLISECONDS);
-        scheduler.schedule(showDev, 6500, TimeUnit.MILLISECONDS);
-        scheduler.schedule(sautWithBorder, 7000, TimeUnit.MILLISECONDS);
-        scheduler.schedule(showQuentin, 7500, TimeUnit.MILLISECONDS);
-        scheduler.schedule(showChristophe, 8000, TimeUnit.MILLISECONDS);
-        scheduler.schedule(sautWithBorder, 8500, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautDeLigne, 4800, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautDeLigne, 5100, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautDeLigne, 5400, TimeUnit.MILLISECONDS);
+        scheduler.schedule(border, 5700, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautWithBorder, 6000, TimeUnit.MILLISECONDS);
+        scheduler.schedule(showDev, 6300, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautWithBorder, 6600, TimeUnit.MILLISECONDS);
+        scheduler.schedule(showQuentin, 6900, TimeUnit.MILLISECONDS);
+        scheduler.schedule(showChristophe, 7200, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautWithBorder, 7500, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautWithBorder, 7800, TimeUnit.MILLISECONDS);
+        scheduler.schedule(showMerci, 8100, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautWithBorder, 8400, TimeUnit.MILLISECONDS);
+        scheduler.schedule(showFlavien, 8700, TimeUnit.MILLISECONDS);
         scheduler.schedule(sautWithBorder, 9000, TimeUnit.MILLISECONDS);
-        scheduler.schedule(showMerci, 9500, TimeUnit.MILLISECONDS);
-        scheduler.schedule(sautWithBorder, 10000, TimeUnit.MILLISECONDS);
-        scheduler.schedule(showFlavien, 10500, TimeUnit.MILLISECONDS);
-        scheduler.schedule(sautWithBorder, 11000, TimeUnit.MILLISECONDS);
-        scheduler.schedule(sautWithBorder, 11500, TimeUnit.MILLISECONDS);
-        scheduler.schedule(showThanks, 12000, TimeUnit.MILLISECONDS);
-        scheduler.schedule(sautWithBorder, 12500, TimeUnit.MILLISECONDS);
-        scheduler.schedule(showEnd, 13000, TimeUnit.MILLISECONDS);
-        scheduler.schedule(border, 13500, TimeUnit.MILLISECONDS);
-        scheduler.schedule(sautDeLigne, 14000, TimeUnit.MILLISECONDS);
-        scheduler.schedule(sautDeLigne, 14500, TimeUnit.MILLISECONDS);
-        scheduler.schedule(sautDeLigne, 15000, TimeUnit.MILLISECONDS);
-        scheduler.schedule(sautDeLigne, 15500, TimeUnit.MILLISECONDS);
-        scheduler.schedule(sautDeLigne, 16000, TimeUnit.MILLISECONDS);
-
-        // N'oublie pas de fermer le scheduler proprement plus tard
+        scheduler.schedule(sautWithBorder, 9300, TimeUnit.MILLISECONDS);
+        scheduler.schedule(showThanks, 9600, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautWithBorder, 9900, TimeUnit.MILLISECONDS);
+        scheduler.schedule(showEnd, 10200, TimeUnit.MILLISECONDS);
+        scheduler.schedule(border, 10500, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautDeLigne, 10900, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautDeLigne, 11200, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautDeLigne, 11500, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautDeLigne, 11800, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautDeLigne, 12100, TimeUnit.MILLISECONDS);
+        
         scheduler.shutdown();
     }
 
+    /**
+     * fonction qui affiche le généric de fin si l'utilisateur perd
+     */
     static void genericLoose(){
          
         System.out.println("");
@@ -482,7 +508,7 @@ class Main{
 
 
         ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
-        // On planifie l'exécution après 1 secondes
+        // On planifie l'exécution après 300 ms secondes
         scheduler.schedule(l1, 300, TimeUnit.MILLISECONDS);
         scheduler.schedule(l2, 600, TimeUnit.MILLISECONDS);
         scheduler.schedule(l3, 900, TimeUnit.MILLISECONDS);
@@ -512,10 +538,17 @@ class Main{
         scheduler.schedule(sautDeLigne, 8100, TimeUnit.MILLISECONDS);
         scheduler.schedule(sautDeLigne, 8400, TimeUnit.MILLISECONDS);
 
-        // N'oublie pas de fermer le scheduler proprement plus tard
         scheduler.shutdown();
     }
 
+    /**
+     * formatte un nombre pour l'afficher correctement dans nos printf
+     * si number < 10 on ajoute 2 espaces avant
+     * si number < 100 on ajoute 1 espaces avant
+     * si number >= 100 on n'ajoute pas d'espace
+     * @param number le nombre à formatter
+     * @return un String: le nombre formatté
+     */
     static String formatNumber(int number){
         String numberFormatted = "";
         if( number < 10 ){
@@ -530,6 +563,12 @@ class Main{
         return numberFormatted;
     }
 
+    /**
+     * ajout une attaque aléatoirement. soit il y a une attaque, soit il n'y en a pas.
+     * 5% de malchance d'avoir une attaque
+     * si il y a une attaque, le nombre de soldats qui attaquent est aléatoire et 
+     * dépend du nombre de tours (jour) effectués
+     */
     static void thereMightBeAnAttack(){
         double random = Math.random();
         if(random <= 0.05){
