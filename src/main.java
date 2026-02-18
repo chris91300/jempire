@@ -1,6 +1,5 @@
 import java.util.Scanner;
 import java.util.concurrent.*;
-import java.util.Random;
 import java.lang.Math;
 
 
@@ -17,25 +16,20 @@ class Main{
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args){
+       boolean withAttack = doesUserWantToBeAttacked(args);
        
         while (habitants > 0 && !castleBuilt) {
             validDay = true;
+            
             displayRessources();
             displayMenu();
             action( getAction() );  
         
-            thereMightBeAnAttack();
-
-            
-            if(validDay){
-                nourriture -= habitants;
-                if (nourriture <= 0){
-                    habitants += nourriture;
-                    nourriture = 0;
-                }
-
-                totalLoop++;
+            if(withAttack){
+                thereMightBeAnAttack();
             }
+                        
+            isTimeToEatAndGoToSleep();
         }
 
         scanner.close();
@@ -46,6 +40,30 @@ class Main{
         
     }
 
+
+    static boolean doesUserWantToBeAttacked(String[] args){
+        boolean withAttack = false;
+        if(args.length > 0){
+        String attack = args[0];
+        if(attack.equals("attack")){
+            withAttack = true;
+        }
+       }
+
+       return withAttack;
+    }
+
+    static void isTimeToEatAndGoToSleep(){
+        if(validDay){
+            nourriture -= habitants;
+            if (nourriture <= 0){
+                habitants += nourriture;
+                nourriture = 0;
+            }
+
+            totalLoop++;
+        }
+    }
 
     static void action(int actionNumber){
         switch(actionNumber){
@@ -510,7 +528,7 @@ class Main{
                 int habitantsDead = (int) (Math.random() * soldiers);
                 habitants -= habitantsDead;
                 String habitantsToString = formatNumber(habitantsDead);
-                String text = "";
+                
                 System.out.println("========================= BRAVO =======================");
                 System.out.println("|                                                     |");
                 System.out.println("|               Vous avez gagné la bataille           |");
