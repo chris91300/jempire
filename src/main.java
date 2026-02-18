@@ -47,7 +47,11 @@ class Main{
                     break;
 
                 default:
-                System.out.println("OUPS. Il y a un soucis.");
+                    System.out.println("========== ERREUR =========");
+                    System.out.println("|                         |");
+                    System.out.println("| OUPS. Il y a un soucis. |");
+                    System.out.println("|                         |");
+                    System.out.println("===========================");
                 validDay = false;
             }
         
@@ -166,7 +170,7 @@ class Main{
             String boisToString = formatNumber(boisManquant);
             System.out.println("=================== ATTENTION ===================");
             System.out.println("|                                               |");
-            System.out.printf("| Il vous manque %s bois pour créer une mine.  |\n", boisToString);
+            System.out.printf("| Il vous manque %s bois pour créer une mine. |\n", boisToString);
             System.out.println("|                                               |");
             System.out.println("=================================================\n");
         }
@@ -190,7 +194,7 @@ class Main{
             String orManquantToString = formatNumber(orManquant);
             System.out.println("====================== ATTENTION ======================");
             System.out.println("|                                                     |");
-            System.out.printf("|   Il vous manque %s d'Or pour recruter un soldat.  |\n", orManquantToString);
+            System.out.printf("|   Il vous manque %s d'Or pour recruter un soldat. |\n", orManquantToString);
             System.out.println("|                                                     |");
             System.out.println("=======================================================\n");
 
@@ -232,39 +236,39 @@ class Main{
             if(bois < 100){
                 int boisManquant = 100 - bois;
                 String boisManquantToString = formatNumber(boisManquant);
-                System.out.println("======================= ATTENTION =======================");
-                System.out.println("|                                                       |");
+                System.out.println("======================= ATTENTION ========================");
+                System.out.println("|                                                        |");
                 System.out.printf("| Il vous manque %s bois pour construire votre château |\n", boisManquantToString);
-                System.out.println("|                                                       |");
-                System.out.println("=========================================================\n");
+                System.out.println("|                                                        |");
+                System.out.println("==========================================================\n");
             }
             if(pierre < 100){
                 int pierreManquant = 100 - pierre;
                 String pierreManquantToString = formatNumber(pierreManquant);
-                System.out.println("======================== ATTENTION ========================");
-                System.out.println("|                                                         |");
+                System.out.println("======================== ATTENTION =========================");
+                System.out.println("|                                                          |");
                 System.out.printf("| Il vous manque %s pierre pour construire votre château |\n", pierreManquantToString);
-                System.out.println("|                                                         |");
-                System.out.println("===========================================================\n");
+                System.out.println("|                                                          |");
+                System.out.println("============================================================\n");
 
             }
             if(or < 200){
                 int orManquant = 200 - or;
                 String orManquantToString = formatNumber(orManquant);
-                System.out.println("======================= ATTENTION =======================");
-                System.out.println("|                                                       |");
+                System.out.println("======================= ATTENTION ========================");
+                System.out.println("|                                                        |");
                 System.out.printf("| Il vous manque %s d'Or pour construire votre château |\n",orManquantToString);
-                System.out.println("|                                                       |");
-                System.out.println("=========================================================\n");
+                System.out.println("|                                                        |");
+                System.out.println("==========================================================\n");
             }
             if(habitants < 40){
                 int habitantsManquant = 40 - habitants;
                 String habitantsManquantToString = formatNumber(habitantsManquant);
-                System.out.println("========================== ATTENTION =========================");
-                System.out.println("|                                                            |");
+                System.out.println("========================== ATTENTION ==========================");
+                System.out.println("|                                                             |");
                 System.out.printf("| Il vous manque %s habitants pour construire votre château |\n",habitantsManquantToString);
-                System.out.println("|                                                            |");
-                System.out.println("==============================================================\n");
+                System.out.println("|                                                             |");
+                System.out.println("===============================================================\n");
             }
 
             validDay = false;
@@ -295,7 +299,7 @@ class Main{
             String pierreManquantetToString = formatNumber(pierreManquante);
             System.out.println("====================== ATTENTION ======================");
             System.out.println("|                                                     |");
-            System.out.printf("|     Il vous manque %s pierres pour commercer.      |\n", pierreManquantetToString);
+            System.out.printf("|     Il vous manque %s pierres pour commercer.     |\n", pierreManquantetToString);
             System.out.println("|                                                     |");
             System.out.println("=======================================================\n");
             validDay = false;
@@ -312,11 +316,11 @@ class Main{
         String nourritureToString = formatNumber(nourriture);
         String habitantsToString = formatNumber(habitants);
         System.out.println();
-        System.out.println("==================================== VOS RESSOURCES ====================================");
-        System.out.println("|                                                                                      |");
-        System.out.printf("|  %s Bois | %s Pierre(s) | %s Or | %s Ration(s) de nourriture | %s Habitant(s)   |\n", boisToString, pierreToString, orToString, nourritureToString, habitantsToString);
-        System.out.println("|                                                                                      |");
-        System.out.println("========================================================================================\n");
+        System.out.println("====================================== VOS RESSOURCES ======================================");
+        System.out.println("|                                                                                          |");
+        System.out.printf("|  %s Bois | %s Pierre(s) | %s Or | %s Ration(s) de nourriture | %s Habitant(s)  |\n", boisToString, pierreToString, orToString, nourritureToString, habitantsToString);
+        System.out.println("|                                                                                          |");
+        System.out.println("============================================================================================\n");
     }
 
     static void genericWon(){
@@ -465,14 +469,14 @@ class Main{
     static String formatNumber(int number){
         String numberFormatted = "";
         if( number < 10 ){
-            numberFormatted = "  "+number;
+            numberFormatted = "   "+number;
         }else if (number < 100 ){
+            numberFormatted = "  "+number;
+        }else if (number < 1000){
             numberFormatted = " "+number;
-        }else{
+        }else {
             numberFormatted = ""+number;
         }
-
-
         return numberFormatted;
     }
 
