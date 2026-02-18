@@ -5,11 +5,11 @@ import java.lang.Math;
 
 class Main{
     static int day = 1;
-    static int bois = 1000;
-    static int pierre = 1000;
-    static int or = 5000;
-    static int nourriture = 1000;
-    static int habitants = 50;
+    static int bois = 0;
+    static int pierre = 0;
+    static int or = 50;
+    static int nourriture = 100;
+    static int habitants = 1;
     static boolean mineBuilt = false;
     static boolean validDay = true;
     static boolean castleBuilt = false;
