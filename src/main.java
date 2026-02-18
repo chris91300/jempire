@@ -58,7 +58,7 @@ class Main{
             nourriture -= habitants;
             if (nourriture <= 0){
                 habitants += nourriture;
-                nourriture = 0;
+                nourriture = 100;
             }
 
             day++;
