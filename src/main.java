@@ -8,7 +8,6 @@ class Main{
     static int bois = 0;
     static int pierre = 0;
     static int or = 50;
-    static int habitants = 1;
     static int nourriture = 100;
     static int habitants = 1;
     static boolean mineBuilt = false;
