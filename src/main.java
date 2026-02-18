@@ -14,7 +14,7 @@ class Main{
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args){
-        
+       
         while (habitants > 0 && !castleBuilt) {
             validDay = true;
             displayRessources();
@@ -62,7 +62,7 @@ class Main{
 
         scanner.close();
         if(!castleBuilt){
-            System.out.println("Tous les habitants sont morts, Game Over !");
+            genericLoose();
         }
         
         
@@ -305,7 +305,7 @@ class Main{
         System.out.println("==============================================================================\n");
     }
 
-    static void generic(){
+    static void genericWon(){
         
         System.out.println("");
         System.out.println("");
@@ -381,4 +381,73 @@ class Main{
         // N'oublie pas de fermer le scheduler proprement plus tard
         scheduler.shutdown();
     }
+
+    static void genericLoose(){
+         
+        System.out.println("");
+        System.out.println("");
+        Runnable sautDeLigne = () -> System.out.println("");
+        Runnable l1 = () ->  System.out.println("                        ***                        ");
+        Runnable l2 = () ->  System.out.println("                        ***                        ");
+        Runnable l3 = () ->  System.out.println("                    ***********                    ");
+        Runnable l4 = () ->  System.out.println("                    ***********                    ");
+        Runnable l5 = () ->  System.out.println("                        ***                        ");
+        Runnable l6 = () ->  System.out.println("                        ***                        ");
+        Runnable l7 = () ->  System.out.println("                        ***                        ");
+        Runnable l8 = () ->  System.out.println("                        ***                        ");
+        Runnable l9 = () ->  System.out.println("                  ***************                  ");
+        Runnable l10 = () -> System.out.println("                   ***************                 ");
+        Runnable l11 = () -> System.out.println("                    ***************                ");
+        Runnable l12 = () -> System.out.println("                     ***************               ");
+        Runnable l13 = () -> System.out.println("                      ***************              ");
+        Runnable l14 = () -> System.out.println("                       ***************             "); 
+        Runnable l15 = () -> System.out.println("                                                   ");        
+        Runnable l16 = () -> System.out.println("                                                   "); 
+        Runnable l17 = () -> System.out.println("       *************************************       ");
+        Runnable l18 = () -> System.out.println("       *                                   *       ");
+        Runnable l19 = () -> System.out.println("       *                PERDU              *       ");
+        Runnable l20 = () -> System.out.println("       *                                   *       ");
+        Runnable l21 = () -> System.out.println("       *   VOS HABITANTS SONT TOUS MORTS   *       ");
+        Runnable l22 = () -> System.out.println("       *                                   *       ");
+        Runnable l23 = () -> System.out.println("       *************************************       ");
+
+
+
+        ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
+        // On planifie l'exécution après 1 secondes
+        scheduler.schedule(l1, 300, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l2, 600, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l3, 900, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l4, 1200, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l5, 1500, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l6, 1800, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l7, 2100, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l8, 2400, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l9, 2700, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l10, 3000, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l11, 3300, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l12, 3600, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l13, 3900, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l14, 4200, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l15, 4200, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l16, 4200, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l17, 4200, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l18, 4200, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l19, 4200, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l20, 4200, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l21, 4200, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l22, 4200, TimeUnit.MILLISECONDS);
+        scheduler.schedule(l23, 4200, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautDeLigne, 14000, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautDeLigne, 14500, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautDeLigne, 15000, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautDeLigne, 15500, TimeUnit.MILLISECONDS);
+        scheduler.schedule(sautDeLigne, 16000, TimeUnit.MILLISECONDS);
+
+        // N'oublie pas de fermer le scheduler proprement plus tard
+        scheduler.shutdown();
+    }
+
+
+
 }
