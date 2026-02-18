@@ -1,8 +1,11 @@
 import java.util.Scanner;
 import java.util.concurrent.*;
+import java.util.Random;
+import java.lang.Math;
 
 
 class Main{
+    static int totalLoop = 0;
     static int bois = 0;
     static int pierre = 0;
     static int or = 50;
@@ -19,9 +22,33 @@ class Main{
             validDay = true;
             displayRessources();
             displayMenu();
-            int action = getAction();
+            action( getAction() );  
+        
+            thereMightBeAnAttack();
+
             
-            switch(action){
+            if(validDay){
+                nourriture -= habitants;
+                if (nourriture <= 0){
+                    habitants += nourriture;
+                    nourriture = 0;
+                }
+
+                totalLoop++;
+            }
+        }
+
+        scanner.close();
+        if(!castleBuilt){
+            genericLoose();
+        }
+        
+        
+    }
+
+
+    static void action(int actionNumber){
+        switch(actionNumber){
                 case 1:
                     exploreForest();
                     break;
@@ -50,22 +77,6 @@ class Main{
                 System.out.println("OUPS. Il y a un soucis.");
                 validDay = false;
             }
-        
-            if(validDay){
-                nourriture -= habitants;
-                if (nourriture <= 0){
-                    habitants += nourriture;
-                    nourriture = 0;
-                }
-            }
-        }
-
-        scanner.close();
-        if(!castleBuilt){
-            genericLoose();
-        }
-        
-        
     }
     /**
      * affiche le menu d'actions possibles à l'utilisateur
@@ -476,4 +487,48 @@ class Main{
         return numberFormatted;
     }
 
+    static void thereMightBeAnAttack(){
+        double random = Math.random();
+        if(random <= 0.95){
+            Math.exp(random);
+            int soldiers =  (int)( Math.exp(random * totalLoop * 0.15) );
+            
+            String soldiersToString = formatNumber(soldiers);
+            System.out.println("======================== ALERTE =======================");
+            System.out.println("|                                                     |");
+            System.out.println("|               Votre village est attaqué             |");
+            System.out.printf("|                   %s soldat(s)                     |\n", soldiersToString);
+            System.out.println("|                                                     |");
+            System.out.println("=======================================================\n");
+
+
+            if( habitants >= soldiers ){
+                int habitantsDead = (int) (Math.random() * soldiers);
+                habitants -= habitantsDead;
+                String habitantsToString = formatNumber(habitantsDead);
+                String text = "";
+                System.out.println("========================= BRAVO =======================");
+                System.out.println("|                                                     |");
+                System.out.println("|               Vous avez gagné la bataille           |");
+                if( habitantsDead > 0 ){
+                    System.out.printf("|        mais vous avez perdu %s habitant(s)         |\n", habitantsToString);
+                }else{
+                    System.out.printf("|              vous avez perdu aucun habitant         |\n", habitantsToString);
+                }
+                
+                System.out.println("|                                                     |");
+                System.out.println("=======================================================\n");
+            }else{
+                habitants -= soldiers;
+                System.out.println("========================= DOMMAGE =====================");
+                System.out.println("|                                                     |");
+                System.out.println("|               Vous avez perdu la bataille           |");
+                System.out.println("|           vous avez perdu tout vos habitants        |");
+                System.out.println("|                                                     |");
+                System.out.println("=======================================================\n");
+            }
+            
+            
+        }
+    }
 }
