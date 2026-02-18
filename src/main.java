@@ -104,18 +104,18 @@ class Main{
      * affiche le menu d'actions possibles à l'utilisateur
      */
     static void displayMenu(){
-        System.out.println("================ JEMPIRE ================");
-        System.out.println("|                                       |");
-        System.out.println("|         Que voulez-vous faire         |");
-        System.out.println("|                                       |");
-        System.out.println("|     Explorer la forêt     | (tapez 1) |");
-        System.out.println("|       Créer une mine      | (tapez 2) |");
-        System.out.println("|   Travailler à la mine    | (tapez 3) |");
-        System.out.println("|     Recruter un soldat    | (tapez 4) |");
-        System.out.println("|         Commercer         | (tapez 5) |");
-        System.out.println("|    Construire le château  | (tapez 6) |");
-        System.out.println("|                                       |");
-        System.out.println("=========================================\n");
+        System.out.println("========================== JEMPIRE =========================");
+        System.out.println("|                                                          |");
+        System.out.println("|                  Que voulez-vous faire                   |");
+        System.out.println("|                                                          |");
+        System.out.println("|         Explorer la forêt                    | (tapez 1) |");
+        System.out.println("|         Créer une mine                       | (tapez 2) |");
+        System.out.println("|         Travailler à la mine                 | (tapez 3) |");
+        System.out.println("|         Recruter un soldat                   | (tapez 4) |");
+        System.out.println("|         Commercer (Pierre -5 / Or +10)       | (tapez 5) |");
+        System.out.println("|         Construire le château                | (tapez 6) |");
+        System.out.println("|                                                          |");
+        System.out.println("============================================================\n");
         System.out.println();
         
     }
@@ -166,13 +166,17 @@ class Main{
      * function qui permet d'explorer la foret
      */
     static void exploreForest(){
-        System.out.println("====================== NOTIFICATION =====================");
-        System.out.println("|                                                       |");
-        System.out.println("| Vous avez trouvé 5 de Bois et 3 Rations de nourriture |");
-        System.out.println("|                                                       |");
-        System.out.println("=========================================================\n");
-        bois += 5;
-        nourriture += 3;
+        int boisFound = 5*habitants;
+        int nourritureFound = 3*habitants;
+        bois += boisFound;
+        nourriture += nourritureFound;
+        String boisFoundToString = formatNumber(boisFound);
+        String nourritureFoundToString = formatNumber(nourritureFound);
+        System.out.println("========================= NOTIFICATION ========================");
+        System.out.println("|                                                             |");
+        System.out.printf("| Vous avez trouvé %s de Bois et %s Rations de nourriture |\n",boisFoundToString,nourritureFoundToString);
+        System.out.println("|                                                             |");
+        System.out.println("===============================================================\n"); 
     }
     /**
      * function qui permet de créer une mine si les ressources de bois sont suffisante (>=10)
@@ -235,14 +239,21 @@ class Main{
      */
     static void workInMine(){
         if (mineBuilt == true){
-                nourriture -= 5;
-                pierre += 5;
-                or += 2;
-                System.out.println("======================================================= NOTIFICATION ======================================================");
-                System.out.println("|                                                                                                                         |");
-                System.out.println("| Exploration de la mine fructueuse. Vous avez gagné 5 pierres et 2 d'or mais vous avez consommé 5 rations de nourriture. |");
-                System.out.println("|                                                                                                                         |");
-                System.out.println("===========================================================================================================================\n");
+                int nourritureLost = 5*habitants;
+                int pierreFound = 5*habitants;
+                int orFound = 2*habitants;
+                nourriture -= nourritureLost;
+                pierre += pierreFound;
+                or += orFound;
+                String nourritureLostToString = formatNumber(nourritureLost);
+                String pierreFoundToString = formatNumber(pierreFound);
+                String orFoundToString = formatNumber(orFound);
+                System.out.println("======================================== NOTIFICATION =======================================");
+                System.out.println("|                                                                                           |");
+                System.out.printf("|        Exploration de la mine fructueuse. Vous avez gagné %s pierres et %s d'or       |\n",pierreFoundToString,orFoundToString);
+                System.out.printf("|                     mais vous avez consommé %s rations de nourriture.                   |\n",nourritureLostToString);
+                System.out.println("|                                                                                           |");
+                System.out.println("=============================================================================================\n");
             } else {
                 System.out.println("============= ATTENTION ============");
                 System.out.println("|                                  |");
@@ -511,7 +522,7 @@ class Main{
 
     static void thereMightBeAnAttack(){
         double random = Math.random();
-        if(random <= 0.95){
+        if(random <= 0.05){
             Math.exp(random);
             int soldiers =  (int)( Math.exp(random * totalLoop * 0.15) );
             
@@ -528,7 +539,6 @@ class Main{
                 int habitantsDead = (int) (Math.random() * soldiers);
                 habitants -= habitantsDead;
                 String habitantsToString = formatNumber(habitantsDead);
-                
                 System.out.println("========================= BRAVO =======================");
                 System.out.println("|                                                     |");
                 System.out.println("|               Vous avez gagné la bataille           |");
