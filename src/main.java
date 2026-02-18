@@ -48,6 +48,12 @@ class Main{
         if(attack.equals("attack")){
             withAttack = true;
         }
+
+        // on gagne directement. c'est juste pour la présentation
+        if(attack.equals("win")){
+            castleBuilt = true;
+            genericWon();
+        }
        }
 
        return withAttack;
@@ -387,7 +393,7 @@ class Main{
         Runnable l13 = () -> System.out.println("       ****************     ****************       ");
         Runnable l14 = () -> System.out.println("       ****************     ****************       "); 
 
-        Runnable sautWithBorder =  () ->   System.out.println("       *                                   *       ");
+        Runnable sautWithBorder =  () ->   System.out.println("       |                                   |       ");
         Runnable border =  () -> System.out.println("       =====================================       ");// 7 37 7
         Runnable showDev = () -> System.out.println("       |           DÉVELOPPEURS            |       ");// 12 attention border right et left
         Runnable showQuentin = ()->System.out.println("       |        Quentin  DEHAINAULT        |       ");
